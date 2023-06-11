@@ -1,0 +1,39 @@
+{
+    "general": {
+        "working_days": ["mo", "tue", "wed", "thu", "fri"],
+        "regular_output" : 40
+    },
+    "tasks": [
+        {
+            "id": 0,
+            "duration": 420,       
+            "label": "Some task!",
+            "planned_resources": 3.0,
+            "earliest_start_date": "2023-06-08"
+        },
+        {
+            "id": 1,
+            "duration": 540,       
+            "label": "Another task",
+            "planned_resources": 3.0, 
+            "earliest_start_date": "2023-06-08",
+            "predecessors": 0  
+        }
+
+    ],
+    "resources": [
+        {
+            "id": 0,
+            "label": "A Resource Name",
+            "output": 32     
+        }
+    ],
+
+    "assignments": [
+        {
+            "task": 0,
+            "resource": 0,
+            "percentage": 50   
+        }
+    ]
+}

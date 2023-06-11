@@ -1,0 +1,61 @@
+<svg style="background-color:white" xmlns="http://www.w3.org/2000/svg">
+<path d="M150,0 l0,5000 z" fill="none" stroke="black" stroke-width="1"/>
+<text fill="black" font-size="8" x="0" y="8">
+Task
+</text>
+<path d="M173,0 l0,5000 z" fill="none" stroke="black" stroke-width="1"/>
+<text fill="black" font-size="8" x="173" y="10">
+2023-07-01
+</text>
+<path d="M265,0 l0,5000 z" fill="none" stroke="black" stroke-width="1"/>
+<text fill="black" font-size="8" x="265" y="10">
+2023-10-01
+</text>
+<path d="M357,0 l0,5000 z" fill="none" stroke="black" stroke-width="1"/>
+<text fill="black" font-size="8" x="357" y="10">
+2024-01-01
+</text>
+<path d="M448,0 l0,5000 z" fill="none" stroke="black" stroke-width="1"/>
+<text fill="black" font-size="8" x="448" y="10">
+2024-04-01
+</text>
+<path d="M539,0 l0,5000 z" fill="none" stroke="black" stroke-width="1"/>
+<text fill="black" font-size="8" x="539" y="10">
+2024-07-01
+</text>
+<path d="M157,20 l21,0 l0,8 l-21,0 z" fill="#A0A0CC" stroke="#7979CC" stroke-width="1"/>
+<text fill="black" font-size="8" x="0" y="26">
+Foo, 15 days, 2 FTE
+</text>
+<path d="M0,19 l5000,0 z" fill="none" stroke="black" stroke-width="1"/>
+<path d="M178,30 l33,0 l0,8 l-33,0 z" fill="#A0A0CC" stroke="#7979CC" stroke-width="1"/>
+<text fill="black" font-size="8" x="0" y="36">
+Another task, 22 days, 3 FTE
+</text>
+<path d="M0,29 l5000,0 z" fill="none" stroke="black" stroke-width="1"/>
+<path d="M150,40 l7,0 l0,8 l-7,0 z" fill="#A0A0CC" stroke="#7979CC" stroke-width="1"/>
+<text fill="black" font-size="8" x="0" y="46">
+Yet Another task, 3 days, 3 FTE
+</text>
+<path d="M0,39 l5000,0 z" fill="none" stroke="black" stroke-width="1"/>
+<path d="M204,50 l111,0 l0,8 l-111,0 z" fill="#A0A0CC" stroke="#7979CC" stroke-width="1"/>
+<text fill="black" font-size="8" x="0" y="56">
+Yet Another task, 78 days, 2 FTE
+</text>
+<path d="M0,49 l5000,0 z" fill="none" stroke="black" stroke-width="1"/>
+<path d="M157,44 L157,24 z" fill="none" stroke="blue" stroke-width="1"/>
+<path d="M178,24 L178,34 z" fill="none" stroke="blue" stroke-width="1"/>
+<path d="M157,44 L204,54 z" fill="none" stroke="blue" stroke-width="1"/>
+<text fill="black" font-size="8" x="178" y="26">
+Ernst:100%, Hans:100%, FTE:2/2
+</text>
+<text fill="black" font-size="8" x="211" y="36">
+FTE:0/3
+</text>
+<text fill="black" font-size="8" x="157" y="46">
+FTE:0/3
+</text>
+<text fill="black" font-size="8" x="315" y="56">
+FTE:0/2
+</text>
+</svg>

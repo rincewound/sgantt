@@ -1,0 +1,62 @@
+{
+    "tasks": [
+        {
+            "id": 0,
+            "duration": 240,
+            "label": "Foo",
+            "earliest_start_date": "2023-01-02",
+            "planned_resources": 2.0,
+            "predecessors": [2]
+          },
+          {
+            "id": 1,
+            "duration": 540,       
+            "label": "Another task",
+            "planned_resources": 3.0, 
+            "earliest_start_date": "2023-06-08",
+            "predecessors": [0]  
+        },
+        {
+            "id": 2,
+            "duration": 540,       
+            "label": "Yet Another task",
+            "planned_resources": 3.0, 
+            "earliest_start_date": "2023-05-15",
+            "predecessors": []  
+        },
+        {
+            "id": 3,
+            "duration": 1250,       
+            "label": "Yet Another task",
+            "planned_resources": 2.0, 
+            "earliest_start_date": "2023-08-01",
+            "predecessors": [2]  
+        }
+
+
+    ],
+    "resources": [
+        {
+            "id": 0,
+            "label": "Hans",
+            "output": 32     
+        },
+        {
+            "id": 1,
+            "label": "Ernst",
+            "output": 40     
+        }
+    ],
+    "allocations": [
+        {    
+            "taskid": 0,
+            "resourceid": 1,
+            "load": 1.0
+        },
+        {    
+            "taskid": 0,
+            "resourceid": 0,
+            "load": 1.0
+        }
+    ]
+}
