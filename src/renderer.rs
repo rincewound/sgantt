@@ -1,8 +1,8 @@
-use std::{collections::HashMap, string};
+use std::{collections::HashMap};
 
 use svg::{Document, node::{element::{path::Data, Path, self}}, Node};
 use time::{Date};
-use chrono::{prelude::*, Months, Days, Duration};
+use chrono::{prelude::*, Months};
 
 use crate::pom::Project;
 
@@ -26,22 +26,6 @@ fn add_v_line(doc: Document, x: u32) -> Document
 {            
     let data = Data::new()
     .move_to((x, 0))    
-    .line_by((0, 5000))
-    .close();
-
-    let path = Path::new()                    
-    .set("fill", "none")
-    .set("stroke", "black")
-    .set("stroke-width", "1")
-    .set("d", data);
-
-    return doc.add(path);
-}
-
-fn add_top_offset_v_line(doc: Document, x: u32, yoff: u32) -> Document
-{            
-    let data = Data::new()
-    .move_to((x, yoff))    
     .line_by((0, 5000))
     .close();
 
