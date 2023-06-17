@@ -1,8 +1,8 @@
-use std::collections::HashMap;
+use std::{collections::HashMap, string};
 
 use svg::{Document, node::{element::{path::Data, Path, self}}, Node};
 use time::{Date};
-use chrono::{prelude::*, Months};
+use chrono::{prelude::*, Months, Days, Duration};
 
 use crate::pom::Project;
 
@@ -70,7 +70,7 @@ fn add_h_line(doc: Document, y: u32) -> Document
     return doc.add(path);
 }
 
-pub fn add_text_at(doc: Document, text: &str, x: u32, y: u32) -> Document
+fn add_text_at(doc: Document, text: &str, x: u32, y: u32) -> Document
 {            
     let txt = svg::node::Text::new(text);            
     let mut text_elem = element::Text::new()
@@ -87,16 +87,16 @@ fn date_to_chrono_naive(date: &Date) -> NaiveDate
     NaiveDate::from_ymd_opt(date.year(), date.month() as u32, date.day() as u32).unwrap()
 }
 
-pub fn start_of_quarter(date: NaiveDate) -> NaiveDate
+fn start_of_quarter(date: NaiveDate) -> NaiveDate
 {
     let month = date.month() as u32;
      // !!! Since January is not Month 0 we need to subtract 1 to get the correct result here
     let months_since_q_start = (month - 1) % 3;    
-    let q_start = month -months_since_q_start;
+    let q_start = month - months_since_q_start;
     NaiveDate::from_ymd_opt(date.year(), q_start, 1).unwrap() 
 }
 
-pub fn next_quarter(date: NaiveDate) -> NaiveDate
+fn next_quarter(date: NaiveDate) -> NaiveDate
 {
     let start_of_this_q = start_of_quarter(date);
     start_of_this_q.checked_add_months(Months::new(3)).unwrap()
@@ -126,7 +126,7 @@ fn render_gantt_layout(start_date: Date) -> Document
     document
 }
 
-pub fn date_to_x_pos(start_date: Date, rel_date: Date) -> u32
+fn date_to_x_pos(start_date: Date, rel_date: Date) -> u32
 {
     if rel_date > start_date
     {
@@ -246,9 +246,56 @@ fn render_dependency_arrows(p: &Project, task_start_and_end_points: &HashMap<u32
     the_doc
 }
 
-pub fn render_resource_load_chart(p: Project, start_date: Date) -> Document
+fn select_color_for_load(load: f32) -> String
 {
+    let color =  match load
+    {
+        x if (0.0..=0.25).contains(&x) => "#00C000",
+        x if (0.26..=0.5).contains(&x) => "#00FF00",
+        x if (0.51..=0.75).contains(&x)  =>  "#FFFF00",
+        x if (0.75..=1.0).contains(&x) =>  "#FF0000",
+        x if x > 1.00 =>  "#A00000",
+        _ => "#000000"
+
+    };
+    color.to_string()
+}
+
+pub fn render_resource_load_chart(p: Project, start_date: Date) -> Document
+{   
     let mut document = render_gantt_layout(start_date);
+    let mut resource_number = 0;
+    for res in p.resources.iter()
+    {
+        let element_y = BAR_START_Y + BAR_HEIGHT * resource_number + 2 * resource_number;
+        document = add_text_at(document, &res.label, 0, element_y + 6);
+        document = add_h_line(document, element_y - 1 );
+        // We calculate the load of each resource at the start of the
+        // week to avoid having too many objects
+        for day in 0..365
+        {
+            
+            let the_date = start_date.checked_add(time::Duration::days(day)).unwrap();
+            let load = p.calculate_resource_load(res.id, the_date);
+
+            let element_x = date_to_x_pos(start_date, the_date);
+            let data = Data::new()
+            .move_to((element_x as u32, element_y))
+            .line_by((1, 0))
+            .line_by((0, BAR_HEIGHT))
+            .line_by((-1, 0))
+            .close();
+
+        let _path = Path::new()                    
+                .set("fill", select_color_for_load(load))
+                .set("stroke", select_color_for_load(load))
+                .set("stroke-width", "1")
+                .set("d", data);
+            document = document.add(_path);  
+        }
+        resource_number += 1;
+        
+    }
 
     document
 }

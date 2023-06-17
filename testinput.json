@@ -45,18 +45,35 @@
             "id": 1,
             "label": "Ernst",
             "output": 40     
+        },
+        {
+            "id": 2,
+            "label": "Werner",
+            "output": 40     
         }
+
     ],
     "allocations": [
         {    
             "taskid": 0,
             "resourceid": 1,
-            "load": 1.0
+            "load": 0.75
         },
         {    
             "taskid": 0,
             "resourceid": 0,
             "load": 1.0
+        },
+        {    
+            "taskid": 1,
+            "resourceid": 2,
+            "load": 0.75
+        },
+        {    
+            "taskid": 3,
+            "resourceid": 2,
+            "load": 0.75
         }
+
     ]
 }

@@ -46,7 +46,7 @@ Project Format (JSON):
             "label": "Another task",
             "planned_resources": 3.0, // i.e. 3.0 * "regular_output" 
             "earliest_start_date": "2023-06-08",
-            "predecessors": 0   // this will shift the startdate to "after the predecessor is done."
+            "predecessors": [0]   // this will shift the startdate to "after the predecessor is done."
         }
 
     ]
@@ -67,3 +67,16 @@ Project Format (JSON):
     ]
 }
 ```
+
+== Interpreting the output
+
+=== Gantt Chart
+This is your typical Gantt chart that displays which tasks are being processed when. However, there are
+some additional informations:
+- On the left, next to the task's name the "FTE" number displays the "planned_resources" value for this chart.
+- On the right, next to each bar we can see the allocated resources and the percentage to which they work on this taks.
+- The length of each bar is calculated by two means:
+    - If no resources were assigned to the task, the length is calculated "as-if" resources were available according to the planned number.
+    - If resources are assigned to the task, the length is calculated based on the actual number of resources available to the task.
+
+=== Load Chart
