@@ -73,10 +73,11 @@ Project Format (JSON):
 === Gantt Chart
 This is your typical Gantt chart that displays which tasks are being processed when. However, there are
 some additional informations:
-- On the left, next to the task's name the "FTE" number displays the "planned_resources" value for this chart.
+- On the left, next to the task's name the "FTE" number displays the "planned_resources" value for this chart. The "days" number denotes the number of __working__ days of effort that remain on this task.
 - On the right, next to each bar we can see the allocated resources and the percentage to which they work on this taks.
 - The length of each bar is calculated by two means:
     - If no resources were assigned to the task, the length is calculated "as-if" resources were available according to the planned number.
     - If resources are assigned to the task, the length is calculated based on the actual number of resources available to the task.
 
 === Load Chart
+The load chart will calculate the speculative load for all resources in the project for the next 365 days, based on the assignments.
